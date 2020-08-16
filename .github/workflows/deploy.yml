@@ -7,8 +7,8 @@ name: Deploy to GAE
 on:
   push:
     branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 # GCP environment variable
 env:
