@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy to AppEngine
+name: Deploy to GAE
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
 # GCP environment variable
 env:
@@ -42,7 +42,7 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Copy Service Accoud from environment
+      - name: Copy Service Account from Environment
         run: |
           echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
       - name: Use cloud-sdk
