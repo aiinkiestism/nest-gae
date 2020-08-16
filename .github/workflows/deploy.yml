@@ -7,8 +7,8 @@ name: Deploy to AppEngine
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
 # GCP environment variable
 env:
@@ -31,14 +31,14 @@ jobs:
         with:
           path: node_modules
           key: v1-dependencies-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: 
+          restore-keys: |
             v1-dependencies-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build Application
-        run:
+        run: |
           yarn
           yarn build
           
